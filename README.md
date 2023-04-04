@@ -28,6 +28,17 @@ Mental health is an essential aspect of our well-being that often gets neglected
 <br>
 <br>
 
+# Screenshots
+<div  align="center"> 
+ <img  border="0" height='350'src="assets\readme5.png" >
+ <img border="0" height='350'src="assets\readme1.png" >
+  <img  border="0" height='350'src="assets\readme2.png" >
+ <img border="0" height='350'src="assets\readme3.png" >
+  <img  border="0" height='350'src="assets\readme4.png" >
+
+</div>
+
+
 
 
 # Features
@@ -57,7 +68,7 @@ The app's most crucial feature is the mood tracker, which allows individuals to 
 
 ## Demo
 
-Click [HERE](https://youtu.be/jZ_ubEUCly0) to check it out!
+Click [HERE]() to check it out!
 
 ## Usage
 1. Ensure you have Flutter and Andriod Studio downloaded on your machine and are able to run Flutter projects locally.
