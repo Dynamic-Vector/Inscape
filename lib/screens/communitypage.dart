@@ -16,14 +16,13 @@ class CommunityPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20.0, top: 20),
             child: Text(
-              "Community!",
-              style: GoogleFonts.ubuntu(fontSize: 22, color: Colors.black),
+              "Live, Love, Laugh!",
+              style: GoogleFonts.ubuntu(fontSize: 20, color: Colors.black),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20),
             child: Container(
-              height: MediaQuery.of(context).size.height / 7,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   color: Color.fromRGBO(250, 170, 159, 0.2),
@@ -44,17 +43,17 @@ class CommunityPage extends StatelessWidget {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height / 1.8,
+            height: MediaQuery.of(context).size.height / 1.75,
             child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
+                physics: BouncingScrollPhysics(),
                 itemCount: 20,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:
                         const EdgeInsets.only(left: 20.0, right: 20, top: 20),
                     child: Container(
-                      height: MediaQuery.of(context).size.height / 7,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           color: Color.fromRGBO(250, 170, 159, 0.1),
@@ -85,7 +84,7 @@ class CommunityPage extends StatelessWidget {
                                                   .width /
                                               1.5,
                                           child: Text(
-                                            "Contrary to popular belief, Lorem Ipsum is simply random text. It has roots in a piece of classical Latin literature from 45 BC!",
+                                            "Contrary to popular belief, Lorem Ipsum is simply random text. It has roots in a piece of classical Latin literature from 45 BC!Contrary to popular belief, Lorem Ipsum is simply random text. It has roots in a piece of classical Latin literature from 45 BC!",
                                             style: GoogleFonts.ubuntu(
                                               fontSize: 14,
                                             ),
@@ -96,16 +95,25 @@ class CommunityPage extends StatelessWidget {
                                                   .size
                                                   .width /
                                               6,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Icon(Icons.favorite_border),
-                                              Icon(
-                                                Icons.edit_sharp,
-                                                color: Colors.grey.shade700,
-                                              )
-                                            ],
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Icon(
+                                                  Icons.favorite_border,
+                                                  size: 20,
+                                                ),
+                                                Icon(
+                                                  Icons.chat_bubble_outline,
+                                                  color: Colors.grey.shade700,
+                                                  size: 20,
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ],
