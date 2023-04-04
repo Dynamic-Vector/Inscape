@@ -10,14 +10,14 @@ import 'package:url_launcher/url_launcher.dart';
 import 'musicpage.dart';
 
 class NavPage extends StatefulWidget {
-  int pageIndex;
-  NavPage({required this.pageIndex, super.key});
+  const NavPage({super.key});
 
   @override
   State<NavPage> createState() => _NavPageState();
 }
 
 class _NavPageState extends State<NavPage> {
+  int _pageIndex = 0;
   dynamic username = TextEditingController(text: "User");
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   List<Widget> widgetList = [
@@ -30,7 +30,7 @@ class _NavPageState extends State<NavPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: scaffoldKey,
-        endDrawer: Container(
+        drawer: Container(
           width: MediaQuery.of(context).size.width / 1.5,
           child: SafeArea(
             child: Drawer(
@@ -87,51 +87,6 @@ class _NavPageState extends State<NavPage> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 30.0, left: 20),
-                        child: Column(
-                          children: [
-                            Row(children: [
-                              Icon(
-                                Icons.person,
-                                size: 18,
-                              ),
-                              Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 2,
-                                    child: ExpansionTile(
-                                      title: Text("Change Username",
-                                          style:
-                                              GoogleFonts.ubuntu(fontSize: 15)),
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.all(0),
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              15,
-                                          child: TextField(
-                                            controller: username,
-                                            decoration: InputDecoration(
-                                                hintText: "Username",
-                                                hintStyle: GoogleFonts.ubuntu(),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            width: 0.5,
-                                                            color:
-                                                                Colors.black))),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )),
-                            ]),
-                          ],
-                        ),
-                      ),
                     ],
                   ),
                   Padding(
@@ -147,71 +102,53 @@ class _NavPageState extends State<NavPage> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          actions: [
-            IconButton(
-                onPressed: () => scaffoldKey.currentState!.openEndDrawer(),
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.black,
-                ))
-          ],
-          toolbarHeight: MediaQuery.of(context).size.height / 12,
+          backgroundColor: Colors.transparent,
+          toolbarHeight: MediaQuery.of(context).size.height / 14,
           //backgroundColor: Colors.white,
           elevation: 0,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 20,
-                backgroundImage: AssetImage("assets/profile.png")),
-          ),
-          title: Padding(
-            padding: const EdgeInsets.only(top: 0.0, left: 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Hello, " + username.text + "!",
-                  style: GoogleFonts.ubuntu(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black),
-                ),
-                Text(
-                  " Great to see you",
-                  style: GoogleFonts.ubuntu(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.black),
-                )
-              ],
-            ),
+          leading: IconButton(
+              onPressed: () => scaffoldKey.currentState!.openDrawer(),
+              icon: Icon(
+                Icons.menu,
+                color: Colors.black,
+              )),
+          title: Text(
+            (_pageIndex == 0)
+                ? "InScape"
+                : (_pageIndex == 1)
+                    ? "Community"
+                    : (_pageIndex == 2)
+                        ? "Chat"
+                        : (_pageIndex == 3)
+                            ? "Music"
+                            : ("InScape"),
+            style: GoogleFonts.ubuntu(
+                fontSize: 22, fontWeight: FontWeight.w600, color: Colors.black),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
           selectedIconTheme: IconThemeData(color: Colors.blue),
-          currentIndex: widget.pageIndex,
+          currentIndex: _pageIndex,
           type: BottomNavigationBarType.fixed,
           onTap: (index) {
             setState(() {
-              widget.pageIndex = index;
+              _pageIndex = index;
             });
           },
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage("assets/icon.png"),
-                  size: 22,
-                ),
+                icon: Icon(Icons.home, size: 25), label: "Home"),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage("assets/icon.png"), size: 25),
                 label: "Community"),
-            BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Chat"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.library_music), label: "Music"),
+                icon: Icon(Icons.chat, size: 25), label: "Chat"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.library_music, size: 25), label: "Music"),
           ],
         ),
-        body: Center(child: widgetList[widget.pageIndex]));
+        body: Center(child: widgetList[_pageIndex]));
   }
 }
