@@ -24,14 +24,30 @@ class MusicPage extends StatelessWidget {
           ),
         ),
         Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image(
               image: AssetImage("assets/music.png"),
               height: MediaQuery.of(context).size.height / 2.5,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              padding: const EdgeInsets.only(top: 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Relax! 44HZ",
+                    style: GoogleFonts.ubuntu(
+                        fontSize: 28, fontWeight: FontWeight.w600),
+                  ),
+                  Text(
+                    "An Inside Original",
+                    style: GoogleFonts.ubuntu(fontSize: 14, color: Colors.grey),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, top: 10, right: 20),
               child: ProgressBar(
                 thumbGlowRadius: 20,
                 baseBarColor: Colors.white,
@@ -48,11 +64,6 @@ class MusicPage extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 50.0),
               child: Column(
                 children: [
-                  Text(
-                    "Relax! 44HZ",
-                    style: GoogleFonts.ubuntu(
-                        fontSize: 30, fontWeight: FontWeight.bold),
-                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 30.0),
                     child: Row(
@@ -61,11 +72,11 @@ class MusicPage extends StatelessWidget {
                         Icon(
                           Icons.skip_previous,
                           color: Colors.white,
-                          size: 80,
+                          size: 75,
                         ),
                         Icon(Icons.play_circle_filled_outlined,
-                            color: Colors.white, size: 80),
-                        Icon(Icons.skip_next, color: Colors.white, size: 80)
+                            color: Colors.white, size: 75),
+                        Icon(Icons.skip_next, color: Colors.white, size: 75)
                       ],
                     ),
                   ),
