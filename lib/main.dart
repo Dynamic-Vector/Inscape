@@ -6,6 +6,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:mental/screens/communitypage.dart';
 import 'package:mental/screens/homepage.dart';
 import 'package:mental/screens/navigator.dart';
+import 'package:mental/screens/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: NavPage(pageIndex: 3),
+      home: Splash(),
     );
   }
 }
