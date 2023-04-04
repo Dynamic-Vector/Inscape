@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,11 +38,15 @@ class HomePage extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width / 3,
                       child: Text(
-                        "Thought of the day!",
+                        "Stay Awesome",
                         style: GoogleFonts.ubuntu(fontSize: 26),
                       ),
                     ),
-                    Image(image: AssetImage("assets/thought.png"))
+                    Image(
+                      image: AssetImage("assets/thought.png"),
+                      height: 120,
+                      width: 120,
+                    )
                   ],
                 ),
               ),
